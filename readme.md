@@ -1,11 +1,10 @@
-<p align="left"><img src="https://rahulvijayam.com/wp-content/uploads/2021/11/1-2-1024x576.jpg" alt="Laravel Ecommerce Project " width="500"></p>
+<p align="left"><img src="public/Img/index.JPG" alt="Laravel Ecommerce Project " width="500"></p>
 
  
 
 ## Laravel Ecommerce Project with Complete Source Code
 
-The Laravel Ecommerce Project with Complete Source Code is a PHP-based web application, For a detailed features, and functionalities of the Laravel Ecommerce Project, please visit my blog 👇 <br>
-🌐 http://rahulvijayam.com/laravel-ecommerce-project-complete-source-code
+The Laravel Ecommerce Project with Complete Source Code is a PHP-based web application, For a detailed features, and functionalities of the Laravel Ecommerce Project <br>
 
 ## Features
 - User Dashboard
@@ -28,30 +27,19 @@ The Laravel Ecommerce Project with Complete Source Code is a PHP-based web appli
 -   Composer Version 2 
 ## Installation Steps 
 
-1.  <code> composer create-project rahulvijayam/ecommerce </code>
-2. Create database for  your project with the name as <code>gainaloe</code>
+1.  <code> composer create-project ThapaBinaya/GadgetZone </code>
+2. Create database for  your project with the name as <code>gadgetzone</code>
 3. Now Run <code>php artisan migrate</code> command for creating all the tables 
-4. Add your email credentials in <code>.env</code> file
-5. Add PayuMoney <code>merchant key and salt</code> on <code> config/indipay.php</code> file at line number 30 and 31
-6. Start yor project using <code>php artisan serve</code>
+4. Add your email credentials in <code>.env</code> fil
+5. Start yor project using <code>php artisan serve</code>
 
-## Generate Sample Data ( Optional)
-1. Remove tables(products, users) from the  database.
-2. Run two files present in this link https://github.com/RahulVijayam/ecommerce/tree/master/public/sql on your database
-3. Finished, Now Check it in your browser using http://127.0.0.1:8000
 
 ### Dashboard Details
 - Admin : http://127.0.0.1:8000/admin-dash
-    -   Login Id : rahulvijayanagaram@gmail.com
-    -   Password : 111111111
+    -   Login Id : satik.thapa@gmail.com
+    -   Password : 123456789
 - User  : http://127.0.0.1:8000/dashboard 
  
-### Watch Video
- [![Everything Is AWESOME](https://user-images.githubusercontent.com/36434065/141663839-bb06d652-1be7-4124-b3ba-76e6354bf456.png)](https://www.youtube.com/watch?v=TRr5OQ3YVIE "Watch Video")
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within project, please send an e-mail to me via [contact@rahulvijayam.com](mailto:contact@rahulvijayam.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
