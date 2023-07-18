@@ -12,7 +12,7 @@
                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc; border-collapse: collapse;">
                     <tr>
                         <td align="center"  style="">
-                            <img src="{{asset('assets/img/Logo.webp')}}"  width="300" height="100" style="display:block;margin-top:20px;"/>
+                            <img src="{{asset('assets/img/Logo.PNG')}}"  width="300" height="100" style="display:block;margin-top:20px;"/>
                             
                         </td>
                     </tr>
@@ -80,7 +80,7 @@
                             <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td style="color: #ffffff; font-family: Arial, sans-serif; font-size: 14px;" width="75%">
-                                       &copy;  Gainloe 2021<br/>
+                                       &copy;  GadgetZone 2023<br/>
                                        <font color="#ffffff">For More Details please feel free to  <a href="{{url('Contact')}}" style="color: #ffffff;text-decoration:underline;">ContactUs</font></a> 
                                     </td>
                                     <td align="right" width="25%">

@@ -94,7 +94,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                     {
                         $count=$count +1 ;
                         $total += $details['Final_Price'] * $details['item_quantity'];
-                        $order_details=$order_details.'<br>'.
+                        $order_details=$order_details.
                         ('Product Name:'.$details["item_name"].', Quantity: '.$details["item_quantity"].
                         '<br> Price:'.$details["Final_Price"]);
                         $delivery_charges = $delivery_charges + $details['delivery_charges'] ;
@@ -118,6 +118,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
             /*Order Details Ends Here*/
                  $Order = new Order();
                  $Order->Customer_Emailid=$Email_Id;
+                 $Order->Order_By=$name;
                  $Order->Delivery_Address=$Delivery_Address;
                  $Order->Order_Details=$O_Details;
                  $Order->Coupen_Code=$promocode;

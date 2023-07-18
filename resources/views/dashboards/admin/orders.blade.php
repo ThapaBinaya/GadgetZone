@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title') GadgetZone @endsection
-@section('keywords') Home,About,Contact,Car @endsection
+@section('keywords') Home,About,Contact,Cart @endsection
 @section('description') Write some descripton about the webpage @endsection
 @section('content')
 <div align="center" style="background:#1CD5E8;padding:20px;">

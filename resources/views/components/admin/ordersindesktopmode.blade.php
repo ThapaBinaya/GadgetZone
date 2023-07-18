@@ -1,6 +1,6 @@
 <div class="container"> 
-    <h3 class="py-2 px-5">All Orders</h3>
-   <div class="row px-5">
+    <h3 class="py-2 ">All Orders</h3>
+   <div class="row ">
        
        <div class="col-md-12">
                <div class="card">
@@ -8,6 +8,7 @@
                        <table class="table table-striped table-bordered ">
                            <thead>
                                <th>Order_Id</th>
+                               <th>Order_By</th>
                                <th>Order Details</th>
                                <th>Delivery Address</th>
                                <th>Total Price</th>
@@ -25,6 +26,7 @@
                            <tr>
    
                                <td>{{$item->id}}</td>
+                               <td><?php echo $item->Order_By?></td>
                                <td><?php echo $item->Order_Details?></td>
                                <td><?php echo $item->Delivery_Address ?></td>
                                <td>{{$item->Amount}}</td>
@@ -33,7 +35,8 @@
                                 <a href="{{url('admin-Order-Status/'.$item->id.'')}}" class="badge btaobtn btaobtn-primary px-2 py-2">Check Status</a>
                                  
                                  @if($item->Delivery_Status!='pending' || $item->Order_Cancel_Status==1)
-                                  <a href="{{url('admin-Order-Status/'.$item->id.'')}}"    class="badge btaobtn btaobtn-danger px-2 py-2 disabled">Cancel Order</a>
+                                  <a href="{{url('admin-Order-Status/'.$item->id.'')}}"    class="badge btaobtn btaobtn-danger px-2 py-2 disabled">Cancel Order</a> &nbsp;&nbsp;
+                                  <a href="{{url('admin-order-delete/'.$item->id)}}"    ><i class='fas fa-trash-alt' style='font-size:20px;color:red'></i></a>
                                   @else
                                       <a href="{{url('admin-Order-Cancel/'.$item->id.'')}}" class="badge btaobtn btaobtn-danger px-2 py-2">Cancel Order</a>
                                

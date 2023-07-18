@@ -10,7 +10,7 @@
         <div class="row" style="font-size:15px;">
             <div class="col-md-3">
                     © 2020 Copyright:
-                <a href="https://rahulvijayam.com/"> GadgetZone</a>
+                <a href="#"> GadgetZone</a>
             </div>
             
             <div  id="developedbybtaoteam" class="col-md-9" >

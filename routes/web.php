@@ -115,6 +115,8 @@ Route::get('admin-Order-Status/{id}', 'Admin\Order_Status_Controller@Order_Statu
 Route::get('admin-Order-Cancel/{id}', 'Admin\Order_Status_Controller@Order_Cancel');
 
 Route::get('admin-Order-Re-Cancel/{id}', 'Admin\Order_Status_Controller@Order_Re_Cancel');
+
+Route::get('admin-order-delete/{id}', 'Admin\Order_Status_Controller@deleteorder');
     
 });
 

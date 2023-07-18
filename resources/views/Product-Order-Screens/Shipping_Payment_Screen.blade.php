@@ -79,13 +79,13 @@
             
                     </div>
                 </div>
-                <!--
+                
                 <div class="col-md-12">
                     <div class="form-group">
-                            <input type="radio" name="Payment_Method" value="COD"> COD(Cash On Delivery) :   
+                            <input type="radio" name="Payment_Method" value="COD"> COD(Cash On Delivery) : &nbsp;  <i class='far fa-money-bill-alt' style='color:green'></i> 
                     </div>
                 </div>
-                -->
+                
 
               
                 

@@ -81,7 +81,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                             $User=User::where('email','=',$email)->first();
                             $loginid=$email;
                             $name=$User->name;
-                            //You Paid amount of  '.$amount.' INR  for the following Order
+                            //You Paid amount of  '.$amount.' RS  for the following Order
         	                $welcomemessage='Hello '.$name.'';
         	                $emailbody='<p>Your Payment '.$amount.' towards Order '.$O_id. 'is Successfully Paid .
 Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
@@ -130,7 +130,7 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
                     $Transaction->amount=$amount;
                     $Transaction->status=$status;
                       /* 
-                      date_default_timezone_set('Asia/Kolkata');
+                      date_default_timezone_set('Asia/Kathmandu');
                     $date=date("l jS \of F Y h:i:s A");
                     $Transaction->created_at=$date;
                     */

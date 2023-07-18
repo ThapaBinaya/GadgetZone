@@ -111,7 +111,7 @@ aria-hidden="true">
                                      </td>
                                   </tr>
                                   <tr>
-                                    <th><i class="fas fa-rupee-sign "></i> Payment Mode:</th>
+                                    <th><i class="far fa-money-bill-alt "></i> Payment Mode:</th>
                                     <td> 
                                     
                                            <form action="admin-Update-paymentmode-Status" method="POST">
@@ -159,7 +159,7 @@ aria-hidden="true">
                             <li>
                                  It is not possible to update the delivery and shipping status of the cancelled orders...
                             </li>
-                            <li>Click <a href="{{url('admin-Order-Re-Cancel/'.session('Order_id').'')}}" >Here</a> to Re Cancel the this Order</li>
+                            <li>Click <a class="btn btn-sm btn-outline-success waves-effect" role="button" href="{{url('admin-Order-Re-Cancel/'.session('Order_id').'')}}" >Here</a> to Re Cancel the this Order</li>
                          @else
                                  <li>
                                It is not possible to update the delivery status for multiple times

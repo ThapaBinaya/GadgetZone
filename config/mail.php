@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'codetalentum@btao.in'),
-        'name' => env('MAIL_FROM_NAME', 'Gainloe'),
+        'name' => env('MAIL_FROM_NAME', 'GadgetZone'),
     ],
 
     /*

@@ -52,7 +52,7 @@ class Order_Status_Controller extends Controller
                             $name=$User->name;
                             
         	                $welcomemessage='Hello '.$name.'';
-        	                $emailbody='<p>Your Order has been Shipped. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.gainaloe.com">Gainaloe.com</a></p><br>
+        	                $emailbody='<p>Your Order has been Shipped. Your estimated delivery date is 3-5 working days. If you would like to view the status of your order or make any changes to it, please visit Your Orders on <a href="https://www.gadgetzone.com">GadgetZone.com</a></p><br>
         	                <h4>Order Details: </h4><p> Order No:'.$id.$Order_Details.'</p>
         	                 <p><strong>Delivery Address:</strong>
         	               '.$Delivery_Address.'</p>
@@ -69,8 +69,8 @@ class Order_Status_Controller extends Controller
         	                    ($loginid, $name,$id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        (' Your Gainaloe.com order '.$id.' is Shipped');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        (' Your GadgetZone.com order '.$id.' is Shipped');
+        	                        $message->from('codetalentum@btao.in','GadgetZone');
         	                        
         	                    });
            /* Email Alert Ends Here*/
@@ -82,7 +82,7 @@ class Order_Status_Controller extends Controller
      {
          $id=$request->input('Order_id') ;
         $Orders=Order::find($id);
-        date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+        date_default_timezone_set("Asia/Kathmandu");   //Nepal time (GMT+5:45)
          
         $Delivery_Status =  date('d-m-Y h:i:s');
         $Orders->Delivery_Status=$Delivery_Status;
@@ -117,8 +117,8 @@ class Order_Status_Controller extends Controller
         	                    ($loginid, $name,$id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your Gainaloe.com order '.$id.' is Delivered');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        ('Your GadgetZone.com order '.$id.' is Delivered');
+        	                        $message->from('codetalentum@btao.in','GadgetZone');
         	                        
         	                    });
            /* Email Alert Ends Here*/
@@ -154,7 +154,7 @@ class Order_Status_Controller extends Controller
      public function Order_Cancel(Request $request,$id)
      { 
         $Orders=Order::find($id);
-        date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+        date_default_timezone_set("Asia/Kathmandu");   //Nepal time (GMT+5:45)
          
         $Order_Cancelled_On =  date('d-m-Y h:i:s');
         $Orders->Order_Cancel_Status=1;
@@ -196,8 +196,8 @@ class Order_Status_Controller extends Controller
         	                    ($loginid, $name,$id)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your Gainaloe.com order '.$id.' is Cancelled');
-        	                        $message->from('codetalentum@btao.in','Gainaloe');
+        	                        ('Your GadgetZone.com order '.$id.' is Cancelled');
+        	                        $message->from('codetalentum@btao.in','GadgetZone');
         	                        
         	                    });
            /* Email Alert Ends Here*/
@@ -208,7 +208,7 @@ class Order_Status_Controller extends Controller
       public function Order_Re_Cancel(Request $request,$id)
      { 
         $Orders=Order::find($id);
-        date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+        date_default_timezone_set("Asia/Kathmandu");   //Nepal time (GMT+5:45)
          
         $Order_Cancelled_On =  date('d-m-Y h:i:s');
         $Orders->Order_Cancel_Status=0;
@@ -224,7 +224,12 @@ class Order_Status_Controller extends Controller
 
      }
      
-     
-     
-     
+     public function deleteorder(Request $request, $id)
+    {
+    
+            $delete = Order::find($id);
+            $delete->delete();
+            return redirect()->back()->with('status','Order Removed Successfully !!');
+    }
+      
 }

@@ -32,7 +32,7 @@ class Order_Status_Controller extends Controller
      public function Order_Cancel(Request $request,$id)
      { 
         $Orders=Order::find($id);
-        date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+        date_default_timezone_set("Asia/Kathmandu");   //Nepal time (GMT+5:45)
          
         $Order_Cancelled_On =  date('d-m-Y h:i:s');
         $Orders->Order_Cancel_Status=1;
@@ -78,4 +78,6 @@ class Order_Status_Controller extends Controller
         return redirect()->back()->with('status','Order Cancelled Succesfully');
 
      }
+
+     
 }
