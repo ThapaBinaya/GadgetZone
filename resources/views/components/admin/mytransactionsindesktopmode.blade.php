@@ -1,15 +1,18 @@
 <div class="container">
-    <h3 class="py-2 px-2">My Transactions</h3>
+    <h3 class="py-2 px-2">Transactions</h3>
 <div class="row p-2">
    <div class="col-md-12">
            <div class="card">
                <div class="card-body">
                    <table class="table table-striped table-bordered">
                        <thead>
-                        <th>TXID</th>
+                            <th>TXID</th>
+
                            <th>Order_Id</th>
+
+                           <th>Transaction By</th>
                          
-                           <th>Amount</th>
+                           <th>Amount(Rs)</th>
  
                            <th>Status</th>
 
@@ -24,15 +27,10 @@
 
                          
                            <td>{{$item->TXNID}}</td>
-                           <td>{{$item->Oder_No}}</td>
-
+                           <td>{{$item->Order_No}}</td>
+                           <td>{{$item->Order_By}}</td>
                            <td>{{$item->amount}}</td>
                            <td>{{$item->status}}</td>
-
-                          
-
-
-
 
                        </tr>
                            @endforeach

@@ -1,5 +1,5 @@
 <div class="container"> 
-    <h3 class="py-2 px-5">My Payments</h3>
+    <h3 class="py-2 px-5">Transactions</h3>
    <div class="row px-1">
        
        <div class="col-md-12">
@@ -14,12 +14,15 @@
                             <div class="card ">
                             <div class=" py-3">
                                 <ul style="list-style:none;width:100%;">
-                                    <li> <strong>Order Id: </strong>  {{$item->Oder_No}}</li>
+                                        <li> <strong>Order Id: </strong>  {{$item->Order_No}}</li>
+
                                         <li><strong>TXID: </strong><?php echo $item->TXNID?></li>
+
+                                        <li> <strong>Order By: </strong>  {{$item->Order_By}}</li>
                                         
-                                        <li><strong>Amount: </strong><?php echo $item->amount?></li>
+                                        <li><strong>Amount:</strong> Rs. <?php echo $item->amount?> /-</li>
                                     
-                                        <li><strong>Payment Status: </strong>{{$item->Status}}</li>
+                                        <li><strong>Payment Status: </strong>{{$item->status}}</li>
                                 </ul>
                                     
                                 

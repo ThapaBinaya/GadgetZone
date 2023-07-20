@@ -9,7 +9,8 @@ class Transaction extends Model
     protected $table='transactions';
     protected $fillable=[
         'id',
-        'Oder_No',
+        'Order_No',
+        'Order_By',
         'email',
         'amount',
         'status',

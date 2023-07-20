@@ -13,7 +13,7 @@
                                <th>Order_Id</th>
                                <th>Order Details</th>
                                <th>Delivery Address</th>
-                               <th>Total Price (INR)</th>
+                               <th>Total Price (Rs.)</th>
    
                                 
                                <th>Action</th>
@@ -41,8 +41,10 @@
                                 
                                  @if($item->Delivery_Status!='pending' || $item->Order_Cancel_Status==1)
                                   <a href="{{url('Order-Status/'.$item->id.'')}}"    class="badge btaobtn btaobtn-danger px-2 py-2 disabled">Cancel Order</a>
+                                  <a href="{{url('order-delete/'.$item->id)}}"    ><i class='fas fa-trash-alt' style='font-size:20px;color:red'></i></a>
                                   @else
                                       <a href="{{url('Order-Cancel/'.$item->id.'')}}" class="badge btaobtn btaobtn-danger px-2 py-2">Cancel Order</a>
+                                      <a href="{{url('order-delete/'.$item->id)}}"    ><i class='fas fa-trash-alt' style='font-size:20px;color:red'></i></a>
                                
                                  @endif
    

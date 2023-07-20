@@ -18,12 +18,12 @@
                                                 
                                             
                             <h6 align="left" style="color:white;font-family: 'Balsamiq Sans', cursive;" >
-                                    <strong style="color:yellow;">Order By: </strong><?php echo $item->Order_By?>. <br>  
+                                    <strong style="color:yellow;">Order By: </strong><?php echo $item->Order_By?><br>  
                                     <strong style="color:yellow;">Order Details: </strong><?php echo $item->Order_Details?>  
                             </h6>
                           
                      
-                          <p align="left"><strong style="color:yellow;">Amount: Rs. </strong> {{$item->Amount}} <br>
+                          <p align="left"><strong style="color:yellow;">Amount: </strong> Rs. {{$item->Amount}} /-<br>
                           <strong style="color:yellow;">Delivery Address: </strong> <br><?php echo $item->Delivery_Address ?></p>
                   
                       <a href="{{url('admin-Order-Status/'.$item->id.'')}}" class="badge btaobtn btaobtn-primary px-2 py-2 ">Check Status</a> &nbsp;&nbsp;
@@ -36,6 +36,7 @@
                                   <a href="{{url('admin-order-delete/'.$item->id)}}"    ><i class='fas fa-trash-alt' style='font-size:20px;color:red'></i></a> 
                                   @else
                                       <a href="{{url('admin-Order-Cancel/'.$item->id.'')}}" class="badge btaobtn btaobtn-danger px-2 py-2">Cancel Order</a>
+                                      <a href="{{url('admin-order-delete/'.$item->id)}}"    ><i class='fas fa-trash-alt' style='font-size:20px;color:red'></i></a>
                                
                                  @endif
                         

@@ -79,5 +79,13 @@ class Order_Status_Controller extends Controller
 
      }
 
+     public function deleteorder(Request $request, $id)
+    {
+    
+            $delete = Order::find($id);
+            $delete->delete();
+            return redirect()->back()->with('status','Order Removed Successfully !!');
+    }
+
      
 }

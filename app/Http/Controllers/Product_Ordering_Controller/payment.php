@@ -12,7 +12,6 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     use App\Models\Order;
     use App\Models\Transaction;
     use Illuminate\Support\Facades\Auth;
-    use Softon\Indipay\Facades\Indipay;
      
     use Mail;
 
@@ -25,43 +24,57 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
         {
             $Order=Order::where('id','=',$id)->first();
          
-           $amount=$Order->Amount;
-            // $amount=5;
+            $amount=$Order->Amount;
             $email=$Order->Customer_Emailid ; 
             $id=$Order->id;
-           
-            
-            $parameters = [
-                'txnid' => substr(hash('sha256', mt_rand() . microtime()), 0, 20) ,
-                'amount' => $amount,
-                'email' => $email,   
-                'udf1'=> $id,                   
-                'phone' => '22',
-                'firstname'=> 'd',
-                'productinfo' => 'sd',
-                'key'=>'6pDG59IB',
-                'service_provider'=>'payu_paisa',
-                'curl'=>url('payu/response')
-                
-            ];
-            $order = Indipay::prepare($parameters);
-            return Indipay::process($order);
+
+            // For testing, let's assume the amount is 100
+                // $amount = 100;
+                $returnUrl1 = 'http://127.0.0.1:8000/esewa/response?q=su';
+                $returnUrl2 = 'http://127.0.0.1:8000/esewa/response?q=fu';
+
+                // Replace with your actual eSewa merchant credentials
+                $merchantId = 'EPAYTEST';
+                $secretKey = '123456';
+
+                $data = [
+                    'amt' => $amount,
+                    'txAmt' => 0,
+                    'psc' => 0,
+                    'pdc' => 0,
+                    'tAmt' => $amount,
+                    'pid' => $id,
+                    'su' => $returnUrl1,
+                    'fu' => $returnUrl2,
+                ];
+
+                // Generate a unique verification code
+                $verificationCode = md5($merchantId . $data['tAmt'] . $data['pid'] . $secretKey);
+                $data['scd'] = $merchantId;
+                $data['sdc'] = $verificationCode;
+
+                // Prepare the eSewa payment URL
+                $paymentUrl = 'https://uat.esewa.com.np/epay/main';
+                $redirectUrl = $paymentUrl . '?' . http_build_query($data);
+
+                return redirect()->to($redirectUrl);
+
+
         }
-        public function payumoneyResponse(Request $request)
+        public function esewaResponse(Request $request)
         {
-                $response= Indipay::response($request);
-                $status=$response["status"];
-                $unmappedstatus=$response["unmappedstatus"];
-                $amount=$response["amount"];
-                $O_id=$response["udf1"];
-                $email=$response["email"];             
-                $txnid=$response["txnid"];
+
+                $status = $request->q; 
+                $amt = $request -> amt;
+                $oid = $request -> oid;
+                $refId = $request -> refId;
+                $O_id=$oid;
                 $Order=Order::find($O_id)->first();
-                 $Order_Details=$Order->Order_Details;
+                $Order_Details=$Order->Order_Details;
                 $Delivery_Address=$Order->Delivery_Address;
-             $p_method=$Order->paymentmode;
-            $Amount=$Order->Amount;
-                if($status=="success" && $unmappedstatus=='captured')
+                $p_method=$Order->paymentmode;
+                $Amount=$Order->Amount;
+                if($status=="su")
                 {
                        
                    
@@ -70,39 +83,39 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                     $Order->update();
                     $email=$Order->Customer_Emailid;      
                     $Transaction = new Transaction();
-                    $Transaction->TXNID=$txnid;
-                    $Transaction->Oder_No=$O_id;
+                    $Transaction->TXNID=$refId;
+                    $Transaction->Order_No=$O_id;
+                    $Transaction->Order_By = $Order->Order_By;
                     $Transaction->email=$email;
-                    $Transaction->amount=$amount;
-                    $Transaction->status=$status;
-                    $Transaction->save();
-                    
+                    $Transaction->amount=$amt;
+                    $Transaction->status="success";
+                    $Transaction->save();                    
                            
                             $User=User::where('email','=',$email)->first();
                             $loginid=$email;
                             $name=$User->name;
                             //You Paid amount of  '.$amount.' RS  for the following Order
         	                $welcomemessage='Hello '.$name.'';
-        	                $emailbody='<p>Your Payment '.$amount.' towards Order '.$O_id. 'is Successfully Paid .
-Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
-    	                 <br>
-        	                <h4>Order Details: </h4><p> Order No:'.$O_id.$Order_Details.'</p>
+        	                $emailbody='<p>Your Payment Rs.'.$amt.'/-  towards Order ID:'.$oid. ' is Successfully Paid .
+                            Your Order is Confirmed. Estimated Delivery 3-5 Working days.</p>
+    	                    <br>
+        	                <h4>Order Details: </h4><p> Order No:'.$oid.', '.$Order_Details.'/-</p>
         	                 <p><strong>Delivery Address:</strong>
         	               '.$Delivery_Address.'</p>
-        	                <p> <strong>Total Amount:</strong>
-        	                '.$Amount.'</p>
+        	                <p> <strong>Total Amount: </strong>Rs.
+        	                '.$amt.'/-</p>
         	                 <p><strong>Payment Method:</strong>'.$p_method.'</p>
-        	                  <p><strong>Payment Status:</strong>'.$status.'</p>';
+        	                  <p><strong>Payment Status:</strong> success. </p>';
         	                $emailcontent=array(
         	                    'WelcomeMessage'=>$welcomemessage,
         	                    'emailBody'=>$emailbody
         	                   
         	                    );
         	                    Mail::send(array('html' => 'emails.order_email'), $emailcontent, function($message) use
-        	                    ($loginid, $name,$O_id)
+        	                    ($loginid, $name,$oid)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your GadgetZone.com Order Payment '.$O_id.' is Successfully Paid');
+        	                        ('Your GadgetZone.com Order Payment ID:'.$oid.' is Successfully Paid.');
         	                        $message->from('codetalentum@btao.in','GadgetZone');
         	                        
         	                    });
@@ -124,10 +137,11 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
                     $Order=Order::find($O_id)->first();
                     $email=$Order->Customer_Emailid; 
                     $Transaction = new Transaction();
-                    $Transaction->TXNID=$txnid;
-                    $Transaction->Oder_No=$O_id;
+                    $Transaction->TXNID=$refId;
+                    $Transaction->Order_No=$O_id;
+                    $Transaction->Order_By = $Order->Order_By;
                     $Transaction->email=$email;
-                    $Transaction->amount=$amount;
+                    $Transaction->amount=$amt;
                     $Transaction->status=$status;
                       /* 
                       date_default_timezone_set('Asia/Kathmandu');
@@ -139,14 +153,14 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
                             $loginid=$email;
                             $name=$User->name;
                       $welcomemessage='Hello '.$name.'';
-        	                $emailbody=' <p>Your Payment '.$amount.' towards Order '.$O_id. 'is failed. <br>
+        	                $emailbody=' <p>Your Payment '.$amt.' towards Order '.$oid. 'is failed. <br>
         	                You Can Try Again by using the following link: <br>
-        	                <a href="https://www.gadgetzone.com/proceed_to_Payment/'.$O_id.'">https://www.gadgetzone.com/proceed_to_Payment/'.$O_id.'</a></p>
-        	                <h4>Order Details: </h4><p> Order No:'.$O_id.$Order_Details.'</p>
+        	                <a href="https://www.gadgetzone.com/proceed_to_Payment/'.$oid.'">https://www.gadgetzone.com/proceed_to_Payment/'.$oid.'</a></p>
+        	                <h4>Order Details: </h4><p> Order No:'.$oid.$Order_Details.'</p>
         	                 <p><strong>Delivery Address:</strong>
         	               '.$Delivery_Address.'</p>
         	                <p> <strong>Total Amount:</strong>
-        	                '.$Amount.'</p>
+        	                '.$amt.'</p>
         	                 <p><strong>Payment Method:</strong>'.$p_method.'</p>
         	                  <p><strong>Payment Status:</strong>'.$status.'</p>';
         	                $emailcontent=array(
@@ -155,10 +169,10 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
         	                   
         	                    );
         	                    Mail::send(array('html' => 'emails.order_email'), $emailcontent, function($message) use
-        	                    ($loginid, $name,$O_id)
+        	                    ($loginid, $name,$oid)
         	                    {
         	                        $message->to($loginid, $name)->subject
-        	                        ('Your GadgetZone Order '.$O_id.' Payment is Failed');
+        	                        ('Your GadgetZone Order '.$oid.' Payment is Failed');
         	                        $message->from('codetalentum@btao.in','GadgetZone');
         	                        
         	                    });
@@ -168,7 +182,7 @@ Your Order is Confirmed. Estimated Delivery 3-5 Working days</p>
                     session()->flash('success', 'Session data  is Cleared');
 
                     session(['payment_failure' =>"Your Payment Failed" ]);
-                    session(['O_id' =>$O_id ]);
+                    session(['O_id' =>$oid ]);
                     session()->reflash();   
                     
                     return view("Product-Order-Screens.response")->with('payment_failure','You Payment was Unsuccesfull');  

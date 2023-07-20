@@ -11,7 +11,7 @@
                                 <div class="card-body text-white text-center py-5 px-5 my-5" style="background:hsl(252, 100%, 4%);border-radius:20px;">
                     
                                   <h3 style="color:yellow;font-family: Righteous, cursive;">
-                                         <strong>OID: {{$item->Oder_No}}</strong>
+                                         <strong>OID: {{$item->Order_No}}</strong>
                                              <hr class="hr-light">
                                         </h3>
                                         
@@ -23,8 +23,8 @@
                           
                      
                                       
-                                    <p>   <strong>Amount: </strong><?php echo $item->amount?> <br>
-                                    <strong>Payment Status: </strong>{{$item->status}} </p>
+                                    <p>   <strong>Amount: </strong> Rs. <?php echo $item->amount?> /- <br>
+                                    <strong>Payment Status: </strong>{{$item->status}} .</p>
                         
                                               
                                     </div>

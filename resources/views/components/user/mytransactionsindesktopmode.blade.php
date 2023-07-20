@@ -9,7 +9,7 @@
                         <th>TXID</th>
                            <th>Order_Id</th>
                          
-                           <th>Amount</th>
+                           <th>Amount (Rs.)</th>
  
                            <th>Status</th>
 
@@ -24,7 +24,7 @@
 
                          
                            <td>{{$item->TXNID}}</td>
-                           <td>{{$item->Oder_No}}</td>
+                           <td>{{$item->Order_No}}</td>
 
                            <td>{{$item->amount}}</td>
                            <td>{{$item->status}}</td>

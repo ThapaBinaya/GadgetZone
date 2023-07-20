@@ -18,11 +18,11 @@
                                                 
                                             
                                                  <h6 align="left" style="color:white;font-family: 'Balsamiq Sans', cursive;" >
-                              <strong style="color:yellow;">Order Details: </strong><?php echo $item->Order_Details?>  
+                              <strong style="color:yellow;">Order Details: </strong><?php echo $item->Order_Details?> /-
                             </h6>
                           
                      
-                          <p align="left"><strong style="color:yellow;">Amount: </strong> {{$item->Amount}} INR<br>
+                          <p align="left"><strong style="color:yellow;">Amount: </strong> Rs. {{$item->Amount}} /- <br>
                           <strong style="color:yellow;">Delivery Address: </strong> <br><?php echo $item->Delivery_Address ?></p>
                   
                       <a href="{{url('Order-Status/'.$item->id.'')}}" class="badge btaobtn btaobtn-primary px-2 py-2 ">Check Status</a>
@@ -32,8 +32,10 @@
                                 
                                  @if($item->Delivery_Status!='pending' || $item->Order_Cancel_Status==1)
                                   <a href="{{url('Order-Status/'.$item->id.'')}}"    class="badge btaobtn btaobtn-danger px-2 py-2 disabled">Cancel Order</a>
+                                  <a href="{{url('order-delete/'.$item->id)}}"    ><i class='fas fa-trash-alt' style='font-size:20px;color:red'></i></a>
                                   @else
                                       <a href="{{url('Order-Cancel/'.$item->id.'')}}" class="badge btaobtn btaobtn-danger px-2 py-2">Cancel Order</a>
+                                      <a href="{{url('order-delete/'.$item->id)}}"    ><i class='fas fa-trash-alt' style='font-size:20px;color:red'></i></a>
                                
                                  @endif
                         
