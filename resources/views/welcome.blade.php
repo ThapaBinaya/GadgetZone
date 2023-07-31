@@ -58,7 +58,11 @@
 <!-- About completed Here -->
 
 @php
-$Products=App\Models\Products::where('status','=','1')->get();
+$Products=App\Models\Products::where('status', '=', '1')
+                              ->where('rating', '>=', '3')
+                              ->orderBy('created_at', 'desc')
+                              ->limit(4)
+                              ->get();
 @endphp
 <!-- Products Starts Here -->
 <section id="Products" align="center" class="px-5 wow animated fadeInUpBig fast" style=" font-family: 'Balsamiq Sans', cursive;">
@@ -70,10 +74,12 @@ $Products=App\Models\Products::where('status','=','1')->get();
     <div  class="row my-4 px-4 "  style="width:100%;" >
       @foreach($Products as $item)
       <div class="col-md-3 px-4 my-5"  >
-          <a href="{{url('Shop/'.$item->url)}}">
-              <img src=" {{asset('Uploads/Products/'.$item->image1)}}" alt="" class="img-fluid"  >
+          <div style="height: 270px; overflow:hiden;">
+            <a href="{{url('Shop/'.$item->url)}}" >
+              <img style="width: 100%;height: 100%;object-fit: cover;" src=" {{asset('Uploads/Products/'.$item->image1)}}" alt="" class="img-fluid">
               </a>
-          <div class="py-2" style="background:white;">
+          </div>
+          <div align="center" class="py-2" style="background:white;">
             <span class="black-text my-3" style="font-weight:bold; font-family: 'Balsamiq Sans', cursive;">{{$item->name}}</span>
             <br>
             Price : Rs. {{$item->price}}<br>
@@ -120,6 +126,10 @@ $Products=App\Models\Products::where('status','=','1')->get();
      @endforeach
 
     </div>
+
+    <p  align="center" class="mx-1" style="margin-top:-30px; font-family: 'Balsamiq Sans', cursive;">
+      <a href="all-product"  target="_blank" class="btn btn-dark">View All</a>
+    </p>
    
     <hr class="col-md-6"> 
 </section>

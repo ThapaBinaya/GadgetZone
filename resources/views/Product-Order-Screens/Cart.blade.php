@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title') GadgetZone @endsection
-@section('keywords') Home,About,Contact,Car @endsection
+@section('keywords') Home,About,Contact,Cart @endsection
 @section('description') Write some descripton about the webpage @endsection
 @section('content')
 

@@ -70,7 +70,10 @@
                       <div id="product_data" class="col-md-7 animated fadeInLeft fast">
                           @csrf
 
-                              <h3 style="font-weight:bold;">{{$Product->name}}</h3>
+                              <h3 style="font-weight:bold; color: #084a5e;">{{$Product->name}}</h3>
+
+                              <h5>Available Quantity: <span style="font-weight: bold; color: #084a5e;">{{$Product->quantity}}</span></h5>
+
                           @if($Product->rating==1)
                             <span class="fa fa-star checked"></span>
                               <span class="fa fa-star"></span>
@@ -111,7 +114,7 @@
                               
 
                                 <input type="hidden"   name="product_id"   min=0 value="{{$Product->id}}" required class="form-control product_id">
-                                   <p> Price : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">Rs. {{$Product->price}}</strong></p>
+                                   <p> Price : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">Rs. {{$Product->price}} /-</strong></p>
                                       <?php echo $Product->additional_info;?>
                                 <div class="col-md-6" style="margin-left:-20px;">  
                                   <input type="number" class="form-control quantity" name="quantity" placeholder="Quantity">

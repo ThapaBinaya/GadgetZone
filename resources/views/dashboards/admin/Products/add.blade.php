@@ -98,6 +98,14 @@
                                   <input type="text" name="price" min="0" class="form-control" required>
                               </div>
                           </div>
+
+                          <div class="col-md-6"   >
+                            <div class="form-group">
+                                <label>Available Quantity</label>
+                                <input type="number" name="quantity" min="1"  class="form-control" required>
+                            </div>
+                          </div>
+
                           <div class="col-md-6"   >
                               <div class="form-group">
                                   <label>Discount ( in terms of %)</label>
@@ -250,7 +258,7 @@
 
 
 
-                              </form>
+            </form>
 
               </div>
         </div>

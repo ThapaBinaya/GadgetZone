@@ -13,6 +13,7 @@ class Products extends Model
         'description',
         'rating',
         'price',
+        'quantity',
         'discount',
         'url',
         'image1',

@@ -39,6 +39,7 @@
                             <th>Description</th>
                             <th>Images</th>
                             <th>Price</th>
+                            <th>Quantity</th>
                             <th>Show/Hide</th>
                             <th>Action</th>
     
@@ -59,7 +60,8 @@
     
     
                                 </td>
-                                <td>{{$item->price}}</td>
+                                <td>{{$item->price}} /-</td>
+                                <td>{{$item->quantity}}</td>
     
                                 <td>
                                              <?php

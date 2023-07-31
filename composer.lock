@@ -4,9 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "580794c21e3c5a94d7adb3bd91860d14",
+    "content-hash": "eb44478a12e664da76b6be967335ecd0",
     "packages": [
-        
+        {
+            "name": "act360/laravel-esewa",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/act360/laravel-esewa.git",
+                "reference": "48c70c26ff4660167ff157ee2559c10d5e1906e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/act360/laravel-esewa/zipball/48c70c26ff4660167ff157ee2559c10d5e1906e6",
+                "reference": "48c70c26ff4660167ff157ee2559c10d5e1906e6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.3",
+                "illuminate/support": "~5.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "vlucas/phpdotenv": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Esewa\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Santosh Jung Shahi",
+                    "email": "santosh.act360@gmail.com"
+                }
+            ],
+            "description": "A E-sewa payment gateway integration for laravel",
+            "support": {
+                "issues": "https://github.com/act360/laravel-esewa/issues",
+                "source": "https://github.com/act360/laravel-esewa/tree/v0.1.2"
+            },
+            "time": "2017-05-19T11:13:59+00:00"
+        },
         {
             "name": "clue/stream-filter",
             "version": "v1.6.0",
@@ -73,7 +118,52 @@
             ],
             "time": "2022-02-21T13:15:14+00:00"
         },
-        
+        {
+            "name": "dipesh79/laravel-esewa",
+            "version": "v1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Dipesh79/LaravelEsewa.git",
+                "reference": "c424044f607278bddbb1f4745b8b1b30ef6a3f3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Dipesh79/LaravelEsewa/zipball/c424044f607278bddbb1f4745b8b1b30ef6a3f3f",
+                "reference": "c424044f607278bddbb1f4745b8b1b30ef6a3f3f",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Dipesh79\\LaravelEsewa\\EsewaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dipesh79\\LaravelEsewa\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dipesh79",
+                    "email": "dipeshkhanal79@gmail.com",
+                    "homepage": "https://www.khanaldipesh.com.np",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Esewa - A simple laravel package to integrate esewa payment.",
+            "support": {
+                "issues": "https://github.com/Dipesh79/LaravelEsewa/issues",
+                "source": "https://github.com/Dipesh79/LaravelEsewa/tree/v1"
+            },
+            "time": "2022-12-11T06:08:52+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
@@ -4992,6 +5082,55 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.6"
             },
             "time": "2023-01-03T09:29:04+00:00"
+        },
+        {
+            "name": "twilio/sdk",
+            "version": "7.5.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:twilio/twilio-php.git",
+                "reference": "c5c25509391a7369d8fc89e27cb177967c9dff83"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/c5c25509391a7369d8fc89e27cb177967c9dff83",
+                "reference": "c5c25509391a7369d8fc89e27cb177967c9dff83",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=7.0 < 10"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "src/Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "https://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2023-06-15T07:36:24+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

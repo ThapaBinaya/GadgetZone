@@ -29,7 +29,9 @@ class ProductController extends Controller
            $products->url= $request->input('url');
            $products->description= $request->input('small_description');
            $products->price= $request->input('price');
-          
+
+           $products->quantity= $request->input('quantity');
+
            $products->discount= $request->input('Discount');
            $products->priority= $request->input('priority');
    
@@ -99,19 +101,20 @@ class ProductController extends Controller
         $products->url= $request->input('url');
         $products->description= $request->input('small_description');
         $products->price= $request->input('price');
+        $products->quantity= $request->input('quantity');
         $products->discount= $request->input('Discount');
         $products->rating= $request->input('rating');
         $products->priority= $request->input('priority');
 
 
-         $products->title= $request->input('meta_title');
+        $products->title= $request->input('meta_title');
         $products->meta_description= $request->input('meta_description');
         $products->keywords= $request->input('meta_keyword');
 
         $products->status= $request->input('status')==true ? '1':'0';
         
-           $products->delivery_charges= $request->input('delivery_charges');
-           $products->additional_info= $request->input('additional_info');
+        $products->delivery_charges= $request->input('delivery_charges');
+        $products->additional_info= $request->input('additional_info');
 
         
         if($request->hasfile('image1'))

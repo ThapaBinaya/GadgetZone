@@ -12,7 +12,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     use App\Models\Order;
     use App\Models\Transaction;
     use Illuminate\Support\Facades\Auth;
-     
+    use Twilio\Rest\Client;
     use Mail;
 
     
@@ -119,6 +119,33 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
         	                        $message->from('codetalentum@btao.in','GadgetZone');
         	                        
         	                    });
+
+                                
+                                // Replace these variables with your actual Twilio credentials
+                                    $twilioSid = 'ACe68d55e445d912d74bca62d707ac39c6';
+                                    $twilioToken = '16220d2e34101111fad49000210b0e33';
+                                    $twilioPhoneNumber = '+14322863224'; // Your Twilio phone number (e.g., '+1234567890')
+
+                                    // Create a new Twilio client with your credentials
+                                    $client = new Client($twilioSid, $twilioToken);
+
+                                    // try {
+                                        // Send an SMS using the Twilio client
+                                        $client->messages->create(
+                                            '+9779843759348', // The recipient's phone number in international format (e.g., '+97798XXXXXXXX')
+                                            [
+                                                'from' => $twilioPhoneNumber,
+                                                'body' => 'Hello, this is a test message from Twilio!',
+                                            ]
+                                        );
+
+                                    //     // If the SMS is sent successfully, return a success message
+                                    //     return "SMS sent successfully!";
+                                    // } catch (Exception $e) {
+                                    //     // If an error occurs, return the error message
+                                    //     return "Error: " . $e->getMessage();
+                                    // }
+
                         
                     Session::forget('cart');
                     Session::forget('discount');

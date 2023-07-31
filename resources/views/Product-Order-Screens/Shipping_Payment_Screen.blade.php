@@ -75,7 +75,7 @@
             <div class="row px-3">
                 <div class="col-md-12">
                     <div class="form-group">
-                            <input type="radio"  name="Payment_Method" value="Online"> Online :     <img src="{{asset('Img/payment.jpg')}}" style="width:110px;">
+                            <input type="radio"  name="Payment_Method" value="Online"> Online :  &nbsp;&nbsp;   <img src="{{asset('Img/payment.jpg')}}" style="width:90px;">
             
                     </div>
                 </div>

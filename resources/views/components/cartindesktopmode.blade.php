@@ -38,7 +38,7 @@
                             <tr>
                             <th class="cart-image">Image</th>
                             <th class="cart-product-name">Product Name</th>
-                            <th class="cart-qty">Quantity</th>
+                            <th class="cart-qty">Order Quantity</th>
                             <th class="cart-total">Price</th>
                             <th class="cart-romove">Remove</th>
                             </tr>
