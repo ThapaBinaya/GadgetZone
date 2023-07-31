@@ -122,8 +122,8 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
 
                                 
                                 // Replace these variables with your actual Twilio credentials
-                                    $twilioSid = 'ACe68d55e445d912d74bca62d707ac39c6';
-                                    $twilioToken = '16220d2e34101111fad49000210b0e33';
+                                    $twilioSid = '';
+                                    $twilioToken = '';
                                     $twilioPhoneNumber = '+14322863224'; // Your Twilio phone number (e.g., '+1234567890')
 
                                     // Create a new Twilio client with your credentials
