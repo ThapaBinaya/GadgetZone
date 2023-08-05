@@ -14,6 +14,7 @@ class Products extends Model
         'rating',
         'price',
         'quantity',
+        'category',
         'discount',
         'url',
         'image1',

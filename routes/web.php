@@ -20,9 +20,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/all-product', function () {
-    return view('all_product');
-});
+// Route::get('/all-product', function () {
+//     return view('all_product');
+// });
+
+Route::get('/all-product','AllProductController@index');
+Route::post('/fetch-sorted-products', 'AllProductController@fetchSortedProducts')->name('fetch-sorted-products');
 
 Route::get('/Help', function () {
     return view('Help');

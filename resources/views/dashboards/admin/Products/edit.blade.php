@@ -109,6 +109,22 @@
                             </div>
                           </div>
 
+                          <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" name="category">
+                                    <option value="{{$Products->category}}" disabled>{{$Products->category}}</option>
+                                    <option value="phone">Phone</option>
+                                    <option value="laptop">Laptop</option>
+                                    <option value="desktop">Desktop</option>
+                                    <option value="tablet">Tablet</option>
+                                    <option value="keyboard">Keyboard</option>
+                                    <option value="mouse">Mouse</option>
+                                    <option value="cpu">Cpu</option>
+                                </select> 
+                            </div>
+                        </div>
+
                           <div class="col-md-6"   >
                               <div class="form-group">
                                   <label>Discount ( in terms of %)</label>

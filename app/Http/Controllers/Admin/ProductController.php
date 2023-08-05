@@ -31,6 +31,7 @@ class ProductController extends Controller
            $products->price= $request->input('price');
 
            $products->quantity= $request->input('quantity');
+           $products->category= $request->input('category');
 
            $products->discount= $request->input('Discount');
            $products->priority= $request->input('priority');
@@ -102,6 +103,7 @@ class ProductController extends Controller
         $products->description= $request->input('small_description');
         $products->price= $request->input('price');
         $products->quantity= $request->input('quantity');
+        $products->category= $request->input('category');
         $products->discount= $request->input('Discount');
         $products->rating= $request->input('rating');
         $products->priority= $request->input('priority');

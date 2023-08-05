@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 01:16 AM
--- Server version: 10.4.20-MariaDB
--- PHP Version: 7.4.22
+-- Generation Time: Aug 01, 2023 at 03:41 PM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.1.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gainaloe`
+-- Database: `gadgetzone`
 --
 
 -- --------------------------------------------------------
@@ -35,6 +36,8 @@ CREATE TABLE `products` (
   `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rating` int(11) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
+  `quantity` int(11) NOT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `discount` int(11) DEFAULT NULL,
   `image1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -54,11 +57,12 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `priority`, `name`, `description`, `url`, `rating`, `price`, `discount`, `image1`, `image2`, `image3`, `image4`, `title`, `keywords`, `meta_description`, `status`, `delivery_charges`, `additional_info`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Dusbin', 'A waste container is a container for temporarily storing waste, and is usually made out of metal or plastic. Some common terms are dustbin, garbage can, and trash can.', 'Dusbin', 1, 1500, 50, 'Dusbin-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 10, '<div><font color=\"#008000\" face=\"Arial Black\"><span style=\"font-size: 24px;\"><b>Festivel Offer 50%</b></span></font><br></div>', '2021-11-12 11:26:16', '2021-11-12 11:32:40'),
-(2, 2, 'Flowers and Fruits Basket Set', 'A flower, sometimes known as a bloom or blossom, is the reproductive structure found in flowering plants The biological function of a flower is to facilitateA flower, sometimes', 'Flowers-Fruits-Basket-Set', 1, 2500, NULL, 'Flowers-Fruits-Basket-Set-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 10, '<div><font color=\"#008000\" face=\"Arial Black\"><span style=\"font-size: 24px; background-color: rgb(242, 242, 242);\"><b>Festivel Offer 10%</b></span></font><br></div>', '2021-11-12 11:34:47', '2021-11-12 11:34:47'),
-(3, 3, 'Mat', 'A Piece of material used as a floor or seat covering or in front of a door to wipe the shoes on. 2 : a decorative piece of material used under dishes or vases. 3 : a pad or cushion for gymnastic', 'Mat', 1, 850, 5, 'Mat-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 10, '<div><font color=\"#008000\" face=\"Arial Black\"><span style=\"font-size: 24px;\"><b>Festivel Offer 5%</b></span></font><br></div>', '2021-11-12 11:36:21', '2021-11-12 11:36:47'),
-(4, 4, 'Containers', 'Containers give developers the ability to create predictable environments that are isolated from other applications.', 'Containers', 1, 350, NULL, 'Containers-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 50, '<div><br></div>', '2021-11-12 11:37:56', '2021-11-12 11:37:56');
+INSERT INTO `products` (`id`, `priority`, `name`, `description`, `url`, `rating`, `price`, `quantity`, `category`, `discount`, `image1`, `image2`, `image3`, `image4`, `title`, `keywords`, `meta_description`, `status`, `delivery_charges`, `additional_info`, `created_at`, `updated_at`) VALUES
+(1, 5, 'Dell-xps-5', 'dell laptop', 'Dell', 1, 80000, 12, 'laptop', 10, 'Dell-1-.jpg', NULL, NULL, NULL, 'laptop', 'laptop dell', NULL, '1', 50, '<div><br></div>', '2023-07-20 06:44:54', '2023-07-31 06:24:18'),
+(2, 10, 'Phone Case', 'Iphone X phone case', 'phone-case', 3, 10, 15, 'phone', 0, 'phone-case-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 5, '<div><br></div>', '2023-07-20 06:45:38', '2023-07-20 06:45:38'),
+(3, 3, 'Iphone 11', 'hasoiehfoidshfoids', 'Iphone11', 4, 100000, 10, 'phone', 10, 'Iphone11-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 50, '<div><br></div>', '2023-07-30 07:43:30', '2023-07-30 07:43:30'),
+(4, 5, 'Headphone', 'dfcghvjbknl', 'headphone123', 5, 10000, 20, 'phone', 5, 'headphone123-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 50, '<div><br></div>', '2023-07-30 07:44:36', '2023-07-30 07:44:36'),
+(5, 4, 'Desktop', 'dfxfgchvjbk', 'desktop55', 1, 50000, 8, 'desktop', 15, 'desktop55-1-.jpg', NULL, NULL, NULL, NULL, NULL, NULL, '1', 100, '<div><br></div>', '2023-07-30 07:47:28', '2023-07-30 07:49:20');
 
 --
 -- Indexes for dumped tables
@@ -78,7 +82,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

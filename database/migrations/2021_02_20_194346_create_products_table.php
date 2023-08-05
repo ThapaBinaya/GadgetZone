@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('rating')->nullable();
             $table->integer('price')->nullable();
             $table->integer('quantity');
+            $table->string('category');
             $table->integer('discount')->nullable();
             
             $table->string('image1')->nullable();
