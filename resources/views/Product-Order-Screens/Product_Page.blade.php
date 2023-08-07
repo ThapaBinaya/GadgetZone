@@ -31,7 +31,7 @@
     </style>
 <div class="container py-5">
     
-  <div class="product_data px-3 py-5  "  >
+  <div class="product_data px-3"  >
 
       <div class="row  d-flex align-items-center ">
           <div class="col-md-4  animated fadeInRight fast" style="width: 100%;">
@@ -115,7 +115,7 @@
 
                                 <input type="hidden"   name="product_id"   min=0 value="{{$Product->id}}" required class="form-control product_id">
                                    <p> Price : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">Rs. {{$Product->price}} /-</strong></p>
-                                      <?php echo $Product->additional_info;?>
+                                    <?php echo $Product->additional_info;?>
                                 <div class="col-md-6" style="margin-left:-20px;">  
                                   <input type="number" class="form-control quantity" name="quantity" placeholder="Quantity">
                                 </div>
@@ -135,6 +135,67 @@
 
       </div>
   </div>
+
+  <!-- Display Recommended Products -->
+    <div class="container py-5">
+      <h2 class="black-text animated flash infinite slow" align="center" style="font-weight:bold;">Recommended Products</h2>
+      <hr>
+      <div class="row">
+          @foreach ($recommendedProducts as $recommendedProduct)
+              <div class="col-md-3 px-4 animated pulse infinite slow">
+                  <!-- Display the recommended products here -->
+                  <a href="{{ url('Shop/'.$recommendedProduct->url) }}">
+                      <img style="width: 100%; height: 200px; object-fit: cover;" src="{{ asset('Uploads/Products/'.$recommendedProduct->image1) }}" alt="" class="img-fluid">
+                  </a>
+                  <div align="center" class="py-2" style="background:white;">
+                    <span class="black-text my-3" style="font-weight:bold; font-family: 'Balsamiq Sans', cursive;">{{$recommendedProduct->name}}</span>
+                    <br>
+                    Price : Rs. {{$recommendedProduct->price}}<br>
+                      @if($recommendedProduct->rating==1)
+                                    <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star"></span>
+                                      <span class="fa fa-star "></span>
+                                      <span class="fa fa-star"></span>
+                                      <span class="fa fa-star"></span>
+                                  @elseif($recommendedProduct->rating==2)
+                                  <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star "></span>
+                                      <span class="fa fa-star"></span>
+                                      <span class="fa fa-star"></span>
+                                    @elseif($recommendedProduct->rating==3)
+                                    <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star"></span>
+                                      <span class="fa fa-star"></span>
+                                  
+                                    @elseif($recommendedProduct->rating==4)
+                                    <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star"></span>
+                                  
+                                    @else
+                                    <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                      <span class="fa fa-star checked"></span>
+                                    @endif
+                                     
+                                    <br>
+                   
+                       <a href="{{$recommendedProduct->url}}" class="btn  btn-primary    "> Shop Now</a>
+                    
+                  </div>
+              </div>
+          @endforeach
+      </div>
+    </div>
+    <hr>
+
 </div>
 <hr>
 

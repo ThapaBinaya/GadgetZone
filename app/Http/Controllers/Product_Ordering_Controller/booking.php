@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     use App\Models\Order;
     use Illuminate\Support\Facades\Auth;
     use Mail;
+    use Twilio\Rest\Client;
 
 
     class booking    extends Controller
@@ -142,7 +143,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     	                 <p><strong>Delivery Address:</strong>
     	               '.$Delivery_Address.'</p>
     	                <p> <strong>Total Amount:</strong>
-    	                '.$Amount.'</p>
+    	                '.$Amount.' /-</p>
     	                 <p><strong>Payment Method:</strong>'.$p_method.'</p>';
     	                $emailcontent=array(
     	                    'WelcomeMessage'=>$welcomemessage,
@@ -157,6 +158,34 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
     	                        $message->from('codetalentum@btao.in','GadgetZone');
     	                        
     	                    });
+
+                            // Replace these variables with your actual Twilio credentials
+                                    
+                            $twilioSid = '';
+                            $twilioToken = '';
+                            $twilioPhoneNumber = '+16625032428'; // Your Twilio phone number (e.g., '+1234567890')
+
+                            // Create a new Twilio client with your credentials
+                            $client = new Client($twilioSid, $twilioToken);
+
+                            // try {
+                                // Send an SMS using the Twilio client
+                                $client->messages->create(
+                                    '+9779843759348', // The recipient's phone number in international format (e.g., '+97798XXXXXXXX')
+                                    [
+                                        'from' => $twilioPhoneNumber,
+                                        'body' => 'Hello '.$name.
+                                        'Your Order Was Placed Successfully
+                                        Thank you for your order. We’ll send a confirmation when your order ships.
+                                        Order Details: 
+                                        Order No:'.$id.$O_Details.'
+                                        Delivery Address:
+                                        '.$Delivery_Address.'
+                                        Total Amount:'.$Amount.' /-
+                                        Payment Method: '.$p_method.' ',
+                                    ]
+                                );
+
                     
                             Session::forget('cart');
                             Session::forget('discount');

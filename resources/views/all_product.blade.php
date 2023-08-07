@@ -24,10 +24,10 @@
                 <div class="card-header py-1">
                     <h1 class="" align="center" style="font-weight:bold; font-size: 25px; color: #038596; ">FILTER</h1> 
                 </div>
-                <div class="category card-header px-1 py-1">
-                    <form id="category-form" class="form-inline" >
+                <div class="search card-header px-1 py-1">
+                    <form id="search-form" class="form-inline" >
                             <div class="" >
-                                <select class="form-control" name="category" id="category" style="width: 170px">
+                                <select class="form-control" name="search_box" id="search_box" style="width: 170px">
                                     <option value="">All</option>
                                     <option value="phone">Phone</option>
                                     <option value="laptop">Laptop</option>
@@ -36,7 +36,8 @@
                                     <option value="keyboard">Keyboard</option>
                                     <option value="mouse">Mouse</option>
                                     <option value="cpu">Cpu</option>
-                               </select> 
+                               </select>
+                               {{-- <input type="text" class="form-control" name="search_box" id="search_box" placeholder="Search Product" style="width: 83%"> --}}
                                 <button type="submit" style="background-color: #038596; color: aliceblue; " ><i class="fa fa-search" aria-hidden="true"></i></button>    
                             </div>     
                     </form>
@@ -76,7 +77,7 @@
         <div class="col-md-10">
             <div id="product-list" class="row my-4 px-4 "  style="width:100%;" >
                 @foreach($Products as $item)
-                <div class="col-md-3 px-4 "  >
+                <div class="col-md-3 px-4 " style="padding-bottom: 50px;" >
                     <div style="height: 200px; overflow:hiden;">
                       <a href="{{url('Shop/'.$item->url)}}" >
                         <img style="width: 100%;height: 100%;object-fit: cover;" src=" {{asset('Uploads/Products/'.$item->image1)}}" alt="" class="img-fluid">
@@ -154,7 +155,7 @@
   });
 
   // Detect when the search form is submitted
-  document.getElementById('category-form').addEventListener('submit', function(event) {
+  document.getElementById('search-form').addEventListener('submit', function(event) {
         event.preventDefault();
         // Trigger the AJAX request with the search term
         fetchSortedProducts();
@@ -168,7 +169,7 @@
       const sortByNewest = document.getElementById('sort_newest').checked;
 
        // Get the search term from the search box
-      const searchTerm = document.getElementById('category').value;
+      const searchTerm = document.getElementById('search_box').value;
 
       // Prepare the sorting criteria to be sent in the request body
       const formData = new URLSearchParams();
@@ -223,7 +224,7 @@ function updateProductList(products) {
     // Loop through the products and create the HTML for each product
     products.forEach(product => {
       const productHTML = `
-        <div class="col-md-3 px-4">
+        <div class="col-md-3 px-4" style="padding-bottom: 50px;">
           <div style="height: 200px; overflow:hidden;">
             <a href="/Shop/${product.url}">
               <img style="width: 100%; height: 100%; object-fit: cover;" src="{{ asset('Uploads/Products/${product.image1}') }}" alt="" class="img-fluid">

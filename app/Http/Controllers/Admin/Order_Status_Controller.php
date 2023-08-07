@@ -12,6 +12,7 @@ namespace App\Http\Controllers\Admin;
     use Illuminate\Support\Facades\Auth;
     use Mail;
     use App\User;
+    use Twilio\Rest\Client;
 
 class Order_Status_Controller extends Controller
 {
@@ -74,6 +75,34 @@ class Order_Status_Controller extends Controller
         	                        
         	                    });
            /* Email Alert Ends Here*/
+
+                              // Replace these variables with your actual Twilio credentials
+                                    
+                            $twilioSid = '';
+                            $twilioToken = '';
+                            $twilioPhoneNumber = '+16625032428'; // Your Twilio phone number (e.g., '+1234567890')
+
+                            // Create a new Twilio client with your credentials
+                            $client = new Client($twilioSid, $twilioToken);
+
+                            // try {
+                                // Send an SMS using the Twilio client
+                                $client->messages->create(
+                                    '+9779843759348', // The recipient's phone number in international format (e.g., '+97798XXXXXXXX')
+                                    [
+                                        'from' => $twilioPhoneNumber,
+                                        'body' => 'Hello '.$name.
+                                        'Your Order has been Shipped. Your estimated delivery date is 3-5 working days.
+                                        Order Details:
+                                        Order No:'.$id.$Order_Details.'
+                                        Delivery Address:
+                                        '.$Delivery_Address.'
+                                        Total Amount:'.$Amount.' /-
+                                        Payment Method:'.$p_method.'
+                                        Payment Status:'.$status.'',
+                                    ]
+                                );
+
         return redirect()->back()->with('status','Shipping Status Updated Succesfully');
 
      }
@@ -122,6 +151,29 @@ class Order_Status_Controller extends Controller
         	                        
         	                    });
            /* Email Alert Ends Here*/
+
+                              // Replace these variables with your actual Twilio credentials
+                                    
+                            $twilioSid = '';
+                            $twilioToken = '';
+                            $twilioPhoneNumber = '+16625032428'; // Your Twilio phone number (e.g., '+1234567890')
+
+                            // Create a new Twilio client with your credentials
+                            $client = new Client($twilioSid, $twilioToken);
+
+                            // try {
+                                // Send an SMS using the Twilio client
+                                $client->messages->create(
+                                    '+9779843759348', // The recipient's phone number in international format (e.g., '+97798XXXXXXXX')
+                                    [
+                                        'from' => $twilioPhoneNumber,
+                                        'body' => 'Hello '.$name.
+                                        'Your Order has been delivered!
+                                        Your Feed Back Matters a Lot! 
+                                        Kindly Share your feed back ',
+                                    ]
+                                );
+
         return redirect()->back()->with('status','Delivery  Status Updated Succesfully');
 
      }
@@ -201,6 +253,34 @@ class Order_Status_Controller extends Controller
         	                        
         	                    });
            /* Email Alert Ends Here*/
+
+                              // Replace these variables with your actual Twilio credentials
+                                    
+                            $twilioSid = '';
+                            $twilioToken = '';
+                            $twilioPhoneNumber = '+16625032428'; // Your Twilio phone number (e.g., '+1234567890')
+
+                            // Create a new Twilio client with your credentials
+                            $client = new Client($twilioSid, $twilioToken);
+
+                            // try {
+                                // Send an SMS using the Twilio client
+                                $client->messages->create(
+                                    '+9779843759348', // The recipient's phone number in international format (e.g., '+97798XXXXXXXX')
+                                    [
+                                        'from' => $twilioPhoneNumber,
+                                        'body' => 'Hello '.$name.
+                                        'Your Order Was Cancelled Successfully on '.$Order_Cancelled_On.'
+                                        As per Your Request, we have cancelled your Order. If you paid any payment with us, it will be refunded within 2-3 Working Days...
+                                        Order Details:
+                                        Order No:'.$id.$Order_Details.'
+                                        Delivery Address:
+                                        '.$Delivery_Address.'
+                                        Total Amount:'.$Amount.' /-
+                                        Payment Method:</strong>'.$p_method.'
+                                        Payment Status:</strong>'.$status.'',
+                                    ]
+                                );
         
         return redirect()->back()->with('status','Order Cancelled Succesfully');
 

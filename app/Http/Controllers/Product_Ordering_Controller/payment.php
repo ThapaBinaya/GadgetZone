@@ -122,9 +122,10 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
 
                                 
                                 // Replace these variables with your actual Twilio credentials
+                                    
                                     $twilioSid = '';
                                     $twilioToken = '';
-                                    $twilioPhoneNumber = '+14322863224'; // Your Twilio phone number (e.g., '+1234567890')
+                                    $twilioPhoneNumber = '+16625032428'; // Your Twilio phone number (e.g., '+1234567890')
 
                                     // Create a new Twilio client with your credentials
                                     $client = new Client($twilioSid, $twilioToken);
@@ -135,7 +136,15 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                                             '+9779843759348', // The recipient's phone number in international format (e.g., '+97798XXXXXXXX')
                                             [
                                                 'from' => $twilioPhoneNumber,
-                                                'body' => 'Hello, this is a test message from Twilio!',
+                                                'body' => 'Hello '.$name.'
+                                                Your Payment Rs.'.$amt.' /-  towards Order ID:' .$oid. ' is Successfully Paid .
+                                                Your Order is Confirmed. Estimated Delivery 3-5 Working days.
+                                                Order Details: 
+                                                Order No:'.$oid.', '.$Order_Details. ' /-
+                                                Delivery Address:'.$Delivery_Address.'
+                                                Total Amount: Rs.' .$amt.' /-
+                                                Payment Method:'.$p_method.'
+                                                Payment Status: success.',
                                             ]
                                         );
 
