@@ -119,6 +119,13 @@ class Order_Status_Controller extends Controller
 
        # $Orders->D_Status_Updated_By=$Auth->email;
         $Orders->update();
+
+        /* Product quantity update starts here */
+        $p_id = $Orders->product_id;
+        $order_quantity = $Orders->order_quantity;
+        $Product = Products::find($p_id);
+        $Product->quantity = $Product->quantity - $order_quantity;
+        $Product->update();
         
         /* Email Alert Starts Here*/
          $email=$Orders->Customer_Emailid;
@@ -218,6 +225,7 @@ class Order_Status_Controller extends Controller
 
        # $Orders->D_Status_Updated_By=$Auth->email;
         $Orders->update();
+
           /* Email Alert Starts Here*/
          $email=$Orders->Customer_Emailid;
          $Order_Details=$Orders->Order_Details;

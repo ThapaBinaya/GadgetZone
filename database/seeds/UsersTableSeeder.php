@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
-            'name'            => 'Sudip Kumar Bajagin',
+            'name'            => 'Sudip Kumar Bajgain',
             'email'           => 'sudipbajgain550@gmail.com',
             'address1'        => 'Nala',
             'address2'        => 'Kakre',

@@ -10,6 +10,8 @@ class Order extends Model
     protected $fillable=[
         'Customer_Emailid',
         'Order_By',
+        'product_id',
+        'order_quantity',
         'Delivery_Address',
         'Order_Details',
         'Amount',

@@ -60,6 +60,7 @@
 @php
 $Products=App\Models\Products::where('status', '=', '1')
                               ->where('rating', '>=', '3')
+                              ->where('quantity', '>=', '1')
                               ->orderBy('created_at', 'desc')
                               ->limit(4)
                               ->get();

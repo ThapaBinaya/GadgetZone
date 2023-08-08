@@ -66,7 +66,7 @@
                                             <div class="modify_quantity">
                                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                                   ><i class="fas fa-minus"></i></button>
-                                                <input class="quantity" min="1" name="quantity" value="{{ $details['item_quantity'] }}" type="number" style="width:50px;margin:0px;">
+                                                  <input class="quantity" min="1" max="{{ $details['available_quantity'] }}" name="quantity" value="{{ $details['item_quantity'] }}" type="number" style="width: 50px; margin: 0px;">
                                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                                    ><i class="fas fa-plus"></i></button>
                                               </div>

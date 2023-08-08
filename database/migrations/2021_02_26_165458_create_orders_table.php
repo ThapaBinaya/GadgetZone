@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->string('Customer_Emailid');
             $table->string('Order_By');
+            $table->integer('product_id');
+            $table->integer('order_quantity');
             $table->string('Delivery_Address');
             $table->string('Order_Details');
             $table->float('Coupen_Code')->nullable();

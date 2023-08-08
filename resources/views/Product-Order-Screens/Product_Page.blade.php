@@ -117,14 +117,55 @@
                                    <p> Price : <strong style="font-size:20px;font-family: 'Balsamiq Sans', cursive;">Rs. {{$Product->price}} /-</strong></p>
                                     <?php echo $Product->additional_info;?>
                                 <div class="col-md-6" style="margin-left:-20px;">  
-                                  <input type="number" class="form-control quantity" name="quantity" placeholder="Quantity">
+                                  <input type="number" class="form-control quantity" name="quantity" id="quantityInput" placeholder="Quantity">
                                 </div>
+                                <div id="errorDiv" class="alert alert-danger my-2" style="display: none;"></div>
+
+                                <script>
+                                  // Get the available quantity from the PHP variable and parse it as an integer
+                                  const availableQuantity = parseInt("{{$Product->quantity}}");
+                              
+                                  // Function to show an error message
+                                  function showError(message) {
+                                      const errorDiv = document.getElementById('errorDiv');
+                                      errorDiv.textContent = message;
+                                      errorDiv.style.display = 'block';
+                                  }
+                              
+                                  // Function to hide the error message
+                                  function hideError() {
+                                      const errorDiv = document.getElementById('errorDiv');
+                                      errorDiv.style.display = 'none';
+                                  }
+                              
+                                  // Function to update the input field based on the available quantity
+                                  function updateQuantityInput() {
+                                      const quantityInput = document.getElementById('quantityInput');
+                                      const userInput = parseInt(quantityInput.value);
+                              
+                                      if (userInput > availableQuantity) {
+                                          showError('Quantity cannot exceed the Available Quantity.');
+                                          quantityInput.value = availableQuantity;
+                                      } else {
+                                          hideError();
+                                      }
+                                  }
+                              
+                                  // Call the function when the page loads
+                                  updateQuantityInput();
+                              
+                                  // Event listener to handle changes in the input field
+                                  document.getElementById('quantityInput').addEventListener('change', function() {
+                                      updateQuantityInput();
+                                  });
+                              </script>
+                               
                               <div class="col-md-12 my-3"  id="changethebuttons">
 
 
                                       <button class="btaobtn btaobtn-primary px-2 py-2 book-now-btn" >Book Now</button>
                                       <button   class="btaobtn btaobtn-light px-2 py-2 add-to-cart-btn">Add to Cart </button>
-                                    <div id="showloading"> </div>
+                                      <div id="showloading"> </div>
                                       <div align="left" class="alert alert-danger" id="msg_diverr2" style="display: none;">
                                           <span id="triggererrors"></span>
                                       </div>

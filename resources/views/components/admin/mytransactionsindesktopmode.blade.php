@@ -13,6 +13,8 @@
                            <th>Transaction By</th>
                          
                            <th>Amount(Rs)</th>
+
+                           <th>TXN Date</th>
  
                            <th>Status</th>
 
@@ -29,7 +31,8 @@
                            <td>{{$item->TXNID}}</td>
                            <td>{{$item->Order_No}}</td>
                            <td>{{$item->Order_By}}</td>
-                           <td>{{$item->amount}}</td>
+                           <td>{{$item->amount}} /-</td>
+                           <td>{{$item->created_at}}</td>
                            <td>{{$item->status}}</td>
 
                        </tr>

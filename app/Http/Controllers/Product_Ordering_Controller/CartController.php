@@ -45,6 +45,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
 
                 $products = Products::find($prod_id);
                 $prod_name = $products->name;
+                $ava_quantity = $products->quantity;
                 $prod_image = $products->image1;
                 $delivery_charges=$products->delivery_charges;
                 $priceval = $products->price;
@@ -67,6 +68,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                                 $id => [
                                     'item_id' => $prod_id,
                                     'item_name' => $prod_name,
+                                    'available_quantity' => $ava_quantity,
                                     'item_quantity' => $quantity,
                                     'item_image' => $prod_image,
                                     'item_price' => $priceval,
@@ -95,6 +97,7 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                                 $cart[$id] = [
                                     'item_id' => $prod_id,
                                     'item_name' => $prod_name,
+                                    'available_quantity' => $ava_quantity,
                                     'item_quantity' => $quantity,
                                     'item_image' => $prod_image,
                                     'item_price' => $priceval,
@@ -113,50 +116,31 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
         }
         public function alter_quantity(Request $request)
         {
-              /* Server Side Validation Starts  Here */
-              $Validator=Validator::make
-              (
-                  $request->all(),
-                  [
-                      'quantity' => ['required', 'integer', 'min:1'],
-                  ]
-              );
+            $Validator = Validator::make($request->all(), [
+                'quantity' => ['required', 'integer', 'min:1'],
+            ]);
 
-          /* Server Side Validation  completed Here*/
-
-            if($Validator->fails())
-            {
-                $Response=$Validator->messages();
-
-               return response()->json($Response,200);
-               
-
-            }
-            else
-            {
+            if ($Validator->fails()) {
+                $Response = $Validator->messages();
+                return response()->json($Response, 200);
+            } else {
                 $prod_id = $request->input('product_id');
                 $quantity = $request->input('quantity');
-                $id=$prod_id;
                 $cart = session()->get('cart');
-                if(isset($cart[$id]))
-                {
-                    if($quantity< $cart[$id]['item_quantity'])
-                    {
-                        $cart[$id]['item_quantity']--;
-                        session()->put('cart', $cart);
-                        return response()->json(['status'=>'Quantity is Drecreased']);
+
+                if (isset($cart[$prod_id])) {
+                    $availableQuantity = $cart[$prod_id]['available_quantity'];
+
+                    // Check if the user input quantity is greater than available quantity, then set it to the available quantity
+                    if ($quantity > $availableQuantity) {
+                        $quantity = $availableQuantity;
                     }
-                    else
-                    {
-                        $cart[$id]['item_quantity']++;
-                        session()->put('cart', $cart);
-                        return response()->json(['status'=>'Quantity is Increased']);
-                    }
-                   
-                   
+
+                    $cart[$prod_id]['item_quantity'] = $quantity;
+                    session()->put('cart', $cart);
+                    return response()->json(['status' => 'Quantity updated successfully']);
                 }
             }
-
         }
         
         public function remove(Request $request)

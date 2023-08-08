@@ -99,6 +99,8 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                         ('Product Name:'.$details["item_name"].', Quantity: '.$details["item_quantity"].
                         '<br> Price:'.$details["Final_Price"]);
                         $delivery_charges = $delivery_charges + $details['delivery_charges'] ;
+                        $p_id = $details['item_id'];
+                        $O_Quantity = $details['item_quantity'];
                     }
                 
                 }
@@ -116,10 +118,14 @@ namespace App\Http\Controllers\Product_Ordering_Controller;
                 $Email_Id=Auth::user()->email;
                 $loginid=$Email_Id;
                 $name=Auth::user()->name;
+                $product_id = $p_id;
+                $order_quantity = $O_Quantity;
             /*Order Details Ends Here*/
                  $Order = new Order();
                  $Order->Customer_Emailid=$Email_Id;
                  $Order->Order_By=$name;
+                 $Order->product_id=$product_id;
+                 $Order->order_quantity=$order_quantity;
                  $Order->Delivery_Address=$Delivery_Address;
                  $Order->Order_Details=$O_Details;
                  $Order->Coupen_Code=$promocode;

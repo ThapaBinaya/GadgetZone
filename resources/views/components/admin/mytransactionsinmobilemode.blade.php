@@ -19,6 +19,8 @@
                                         <li><strong>TXID: </strong><?php echo $item->TXNID?></li>
 
                                         <li> <strong>Order By: </strong>  {{$item->Order_By}}</li>
+
+                                        <li> <strong>TXN Date: </strong>  {{$item->created_at}}</li>
                                         
                                         <li><strong>Amount:</strong> Rs. <?php echo $item->amount?> /-</li>
                                     

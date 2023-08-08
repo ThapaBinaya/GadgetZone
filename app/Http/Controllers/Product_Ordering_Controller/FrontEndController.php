@@ -31,7 +31,9 @@ class FrontEndController extends Controller
         $currentFeatures = $currentProduct->name . ' ' . $currentProduct->category;
 
         // Retrieve all products from the database
-        $allProducts = Products::where('status', '=', '1')->get();
+        $allProducts = Products::where('status', '=', '1')
+                               ->where('quantity', '>=', '1')
+                               ->get();
 
         // Initialize an array to store similarity scores
         $similarities = [];

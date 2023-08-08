@@ -15,6 +15,7 @@ class AllProductController extends Controller
     public function index()
     {
         $Products=Products::where('status', '=', '1')
+                                 ->where('quantity', '>=', '1')
                             //   ->where('rating', '>=', '3')
                             //   ->orderBy('created_at', 'desc')
                             //   ->limit(4)
@@ -35,7 +36,8 @@ class AllProductController extends Controller
         $searchTerm = $request->input('search_term');
 
         // Perform database query based on the selected sorting criteria
-        $query = Products::where('status', '=', '1');
+        $query = Products::where('status', '=', '1')
+                         ->where('quantity', '>=', '1');
 
         if ($searchTerm) {
             // If there's a search term, add a search condition to the query
