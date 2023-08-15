@@ -10,12 +10,17 @@
    
 
 </p>
+
 @if (session('status'))
-  <div class="alert alert-danger" role="alert">
-      {{ session('status') }}
-  </div>
-  @endif
   
+<script>
+    $(document).ready(function () {
+    alertify.set('notifier','position','top-right');
+    alertify.alert("Status","{{ session('status') }}");
+    });
+</script>
+
+@endif
 
 </div>
 

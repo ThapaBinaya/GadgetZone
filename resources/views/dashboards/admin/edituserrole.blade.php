@@ -6,12 +6,17 @@
 <div align="center" style="background:#1CD5E8;padding:20px;">
   <h3  class="black-text" style="font-weight:bold;"><a href="{{url('admin-dash')}}">Admin Dashboard</a></h3>
   <a href="{{url('admin-all-users')}}" class="btn btn-outline-dark" style="color:white">Back</a> 
-@if (session('status'))
-  <div class="alert alert-danger" role="alert">
-      {{ session('status') }}
-  </div>
-  @endif
+
+  @if (session('status'))
   
+  <script>
+      $(document).ready(function () {
+      alertify.set('notifier','position','top-right');
+      alertify.alert("Status","{{ session('status') }}");
+      });
+  </script>
+
+  @endif
 
 </div>
 

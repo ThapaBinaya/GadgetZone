@@ -15,7 +15,7 @@ The Laravel Ecommerce Project with Complete Source Code is a PHP-based web appli
 - Email Notifications
 - Subscriber Form
 - A product search form
-- Payment Gateway(PayU) Integrated
+- Payment Gateway(Esewa) Integrated
 - Shopping Cart in a Responsive Layout
 - Pre-Defined Content with High-Resolution Photos
 - Search engine optimization (SEO) for Products

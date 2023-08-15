@@ -13,7 +13,7 @@
         <div class="col-12 col-md-3" style="border-radius:10px;">
                 <div class="container">
                         <div class="card mb-2">
-                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/1.webp')}}"
+                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/1.jpg')}}"
                                 alt="Card image cap" style="border-radius:10px;">
                         </div>
                   </div>
@@ -23,7 +23,7 @@
         <div class="col-12 col-md-3" style="border-radius:10px;">
                 <div class="container">
                         <div class="card mb-2">
-                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/2.webp')}}"
+                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/2.jpg')}}"
                                 alt="Card image cap" style="border-radius:10px;">
                         </div>
                         <div class="bottom-left"  >
@@ -37,7 +37,7 @@
         <div class="col-12 col-md-3" style="border-radius:10px;">
                 <div class="container">
                         <div class="card mb-2">
-                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/3.webp')}}"
+                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/3.jpg')}}"
                                 alt="Card image cap" style="border-radius:10px;">
                         </div>
                         <div class="bottom-left"  >
@@ -50,7 +50,7 @@
         <div class="col-12 col-md-3" style="border-radius:10px;">
                 <div class="container">
                         <div class="card mb-2">
-                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/4.webp')}}"
+                          <img class="card-img-top  animated pulse infinite slow" src="{{asset('slideshow/Mobile/4.jpg')}}"
                                 alt="Card image cap" style="border-radius:10px;">
                         </div>
                         <div class="bottom-left mx-5"  >

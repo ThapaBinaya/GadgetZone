@@ -10,12 +10,17 @@
    <a href="" class="badge badge-pill btn-dark disabled px-3 py-2">   <i class="fas fa-users"></i>  All Users</a> 
     <a href="{{url('admin-bin-users')}}" class="badge badge-pill btn-outline-danger px-3 py-2"><i class="fas fa-dumpster"></i> Recycle Bin</a>
     </p>
-@if (session('status'))
-  <div class="alert alert-danger" role="alert">
-      {{ session('status') }}
-  </div>
-  @endif
+
+    @if (session('status'))
   
+        <script>
+            $(document).ready(function () {
+            alertify.set('notifier','position','top-right');
+            alertify.alert("Status","{{ session('status') }}");
+            });
+        </script>
+     
+        @endif
 
 </div>
 

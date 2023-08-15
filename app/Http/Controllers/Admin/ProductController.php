@@ -182,7 +182,7 @@ class ProductController extends Controller
 
         }
         $products->save();
-        return redirect()->back()->with('status','Product Data Updated Successfully Successfully');   
+        return redirect()->back()->with('status','Product Data Updated Successfully');   
     }
     public function deleteproduct(Request $request, $id)
     {
